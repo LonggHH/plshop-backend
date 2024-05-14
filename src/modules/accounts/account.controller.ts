@@ -22,11 +22,16 @@ export class AccountController {
         let result = await this.accountService.getAccounts();
 
         result = result.filter(account => account.role !== ROLE.ADMIN);
+        let newResult = result.map(item => {
+            delete item.password;
+            delete item.passwordReset;
+            return item;
+        })
 
         return {
             statusCode: HttpStatus.OK,
             message: "Get account successfully",
-            data: result
+            data: newResult
         }
     }
 

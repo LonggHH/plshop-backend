@@ -102,6 +102,7 @@ export class VariationService {
             const variation = await this.variationRepository.findOne({ where: { id: item.variationId } });
 
             variation.stock -= item.quantity;
+            variation.sold += item.quantity; // ====
             await this.variationRepository.save(variation);
             return true;
         });

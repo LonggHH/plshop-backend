@@ -16,5 +16,5 @@ export class CreateEvaluationDto {
 
     @IsNotEmpty()
     @IsNumber()
-    accountId: number
+    accountId: number;
 }
